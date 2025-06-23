@@ -4,11 +4,12 @@ FROM caddy:${VERSION}-builder-alpine AS caddybuilder
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare \
-    --with clevergo.tech/caddy-dnspodcn \
     --with github.com/caddy-dns/alidns \
     --with github.com/abiosoft/caddy-exec \
-    --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
-    --with github.com/mholt/caddy-webdav
+    --with github.com/caddyserver/forwardproxy \
+    --with github.com/mholt/caddy-webdav \
+    --with github.com/WingLim/caddy-webhook \
+    --with github.com/Javex/caddy-fail2ban@main
 
 FROM ghcr.io/nuln/upx:latest AS upxbuilder
 
